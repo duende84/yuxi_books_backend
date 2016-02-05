@@ -16,7 +16,7 @@ module API
         end
         get ":id", root: "book" do
           book = Book.where(id: permitted_params[:id]).first!
-          present :books, books, with: API::BookEntity
+          present :books, book, with: API::BookEntity
         end
       end
     end
