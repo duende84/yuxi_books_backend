@@ -6,8 +6,7 @@ gem 'rails', github: "rails/rails"
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.0'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -31,3 +30,17 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :api do
+  gem 'grape'
+  gem 'grape-entity'
+  gem 'grape-swagger'
+  gem 'grape-swagger-rails'
+  gem 'rack-cors', :require => 'rack/cors'
+  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+  gem 'jbuilder', '~> 2.0'
+end
+
+group :doc do
+  gem 'annotate'
+end
