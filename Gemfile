@@ -37,8 +37,6 @@ group :api do
   gem 'grape-swagger'
   gem 'grape-swagger-rails'
   gem 'rack-cors', :require => 'rack/cors'
-  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-  gem 'jbuilder', '~> 2.0'
 end
 
 group :doc do
