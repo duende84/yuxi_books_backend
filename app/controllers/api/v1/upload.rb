@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 module API
   module V1
     class Books < Grape::API
@@ -17,13 +19,26 @@ module API
           }
 
           # creates a new Upload object
-          upload = Upload.new
-
-          # This is the kind of File object Grape understands so let's pass the hash to it
+          upload = Upload.where(name: attachment[:filename]).first_or_initialize
           upload.file = ActionDispatch::Http::UploadedFile.new(attachment)
           upload.file_path = attachment[:filename]
-          upload.name = file[:filename]
-          upload.save
+
+          if upload.save
+            # read xml file
+            f = File.open(upload.file.path)
+            doc = Nokogiri::XML(f)
+
+            # serialize each xml object in book object
+            doc.css("Book").each do |node|
+              book = Book.where(title: node.xpath('Title').inner_text).first_or_initialize
+              book.author = node.xpath('Author').inner_text
+              book.country = node.xpath('Country').inner_text
+              book.language = node.xpath('Language').inner_text
+              book.price = node.xpath('Price').inner_text
+              book.quantity = node.xpath('Quantity').inner_text
+              book.save
+            end
+          end
         end
       end
     end
