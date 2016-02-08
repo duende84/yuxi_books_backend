@@ -71,6 +71,10 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     builder (3.2.2)
     byebug (8.2.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.0.0)
@@ -109,6 +113,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.99)
+    mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
@@ -116,6 +121,12 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    paperclip (4.3.4)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
     puma (2.16.0)
     rack (2.0.0.alpha)
       json
@@ -167,6 +178,7 @@ DEPENDENCIES
   grape-entity
   grape-swagger
   grape-swagger-rails
+  paperclip
   puma
   rack-cors
   rails!

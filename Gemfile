@@ -42,3 +42,5 @@ end
 group :doc do
   gem 'annotate'
 end
+
+gem "paperclip"
